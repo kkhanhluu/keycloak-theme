@@ -154,7 +154,7 @@ export const Login = memo(
                       >
                         <Checkbox
                           name='rememberMe'
-                          defaultValue={login.rememberMe}
+                          defaultChecked={login.rememberMe}
                         >
                           Remember me
                         </Checkbox>
