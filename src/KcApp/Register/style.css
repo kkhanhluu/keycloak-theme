@@ -1,0 +1,33 @@
+.header-wrapper {
+  display: none;
+}
+
+.login-page {
+  background-color: #f7fafc;
+  min-height: 100vh;
+  padding: 8vh;
+}
+
+.alert {
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  -webkit-padding-start: var(--chakra-space-4);
+  padding-inline-start: var(--chakra-space-4);
+  -webkit-padding-end: var(--chakra-space-4);
+  padding-inline-end: var(--chakra-space-4);
+  padding-top: var(--chakra-space-3);
+  padding-bottom: var(--chakra-space-3);
+  background: #fed7d7;
+  width: 100%;
+  margin: 1rem auto;
+}
+
+#kc-content {
+  width: 45%;
+  margin: 0 auto;
+}

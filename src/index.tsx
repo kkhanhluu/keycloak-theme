@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+import { ChakraProvider } from '@chakra-ui/react';
+import { App } from 'App';
 import { KcApp } from 'KcApp';
 import { kcContext } from 'KcApp/context';
-import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
 import './index.scss';
 
 // const { kcContext } = getKcContext({
@@ -32,7 +33,7 @@ import './index.scss';
 // }
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <ChakraProvider>
     {kcContext === undefined ? <App /> : <KcApp kcContext={kcContext} />}
-  </StrictMode>
+  </ChakraProvider>
 );
