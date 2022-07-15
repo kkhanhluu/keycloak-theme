@@ -1,81 +1,38 @@
-import "./index.scss";
-import { createRoot } from "react-dom/client";
-import { StrictMode } from "react";
-import { App } from "./App";
-import {
-  KcApp as KcAppBase,
-  defaultKcProps,
-  getKcContext,
-  kcMessages,
-  useDownloadTerms
-} from "keycloakify";
-import { useCssAndCx } from "tss-react";
-import tos_en_url from "./tos_en.md";
-import tos_fr_url from "./tos_fr.md";
-import "./kcMessagesExtension"
+import { KcApp } from 'KcApp';
+import { kcContext } from 'KcApp/context';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { App } from './App';
+import './index.scss';
 
-const { kcContext } = getKcContext({
-  /* Uncomment to test th<e login page for development */
-  //"mockPageId": "login.ftl",
-  "mockData": [
-    {
-      "pageId": "login.ftl",
-      "locale": {
-        "currentLanguageTag": "fr" //When we test the login page we do it in french
-      }
-    }
-  ]
-});
+// const { kcContext } = getKcContext({
+//   mockPageId: 'register.ftl',
+// });
 
-if (kcContext !== undefined) {
-  console.log(kcContext);
-}
+// if (kcContext !== undefined) {
+//   console.log(kcContext);
+// }
 
-function KcApp() {
+// function KcApp() {
+//   if (kcContext === undefined) {
+//     throw new Error();
+//   }
 
-  if (kcContext === undefined) {
-    throw new Error();
-  }
+//   const { css } = useCssAndCx();
 
-  useDownloadTerms({
-    kcContext,
-    "downloadTermMarkdown": async ({ currentKcLanguageTag }) => {
+//   return (
+//     <KcAppBase
+//       kcContext={kcContext}
+//       {...{
+//         ...defaultKcProps,
+//         kcHeaderWrapperClass: css({ color: 'red', fontFamily: '"Work Sans"' }),
+//       }}
+//     />
+//   );
+// }
 
-      kcMessages[currentKcLanguageTag].termsTitle = "";
-
-      const markdownString = await fetch((() => {
-        switch (currentKcLanguageTag) {
-          case "fr": return tos_fr_url;
-          default: return tos_en_url;
-        }
-      })())
-        .then(response => response.text());
-
-      return markdownString;
-
-    }
-  });
-
-  const { css } = useCssAndCx();
-
-  return (
-    <KcAppBase
-      kcContext={kcContext}
-      {...{
-        ...defaultKcProps,
-        "kcHeaderWrapperClass": css({ "color": "red", "fontFamily": '"Work Sans"' })
-      }}
-    />
-  );
-}
-
-
-createRoot(document.getElementById("root")!).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {
-      kcContext === undefined ?
-        <App /> :
-        <KcApp />
-    }
+    {kcContext === undefined ? <App /> : <KcApp kcContext={kcContext} />}
   </StrictMode>
 );
