@@ -2,10 +2,10 @@ import { defaultKcProps as props } from 'keycloakify';
 import { Error } from 'keycloakify/lib/components/Error';
 import { Info } from 'keycloakify/lib/components/Info';
 import { KcApp as KcAppBase } from 'keycloakify/lib/components/KcApp';
-import { Login } from 'keycloakify/lib/components/Login';
 import { memo } from 'react';
 import type { KcContext } from './context';
 import './kcMessagesExtension';
+import { Login } from './Login';
 import { Register } from './Register';
 
 export const KcApp = memo(({ kcContext }: { kcContext: KcContext }) => {

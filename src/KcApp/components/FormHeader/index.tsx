@@ -21,7 +21,7 @@ export const FormHeader: FunctionComponent<FormHeaderProps> = ({
         <Heading size='lg'>{title}</Heading>
         <HStack spacing='1' justify='center'>
           <Text color='muted'>{subTitle}</Text>
-          <Link href={link}>
+          <Link textDecoration='underline' textUnderlineOffset={2} href={link}>
             <Button variant='link' colorScheme='blue'>
               {linkText}
             </Button>

@@ -1,4 +1,4 @@
-.register-page {
+.login-page {
   background-color: #f7fafc;
   min-height: 100vh;
   padding: 8vh;
@@ -27,7 +27,7 @@
   margin: 1rem auto;
 }
 
-.register-page #kc-content {
-  width: 45%;
+.login-page #kc-content {
+  width: 40%;
   margin: 1rem auto;
 }

@@ -5,13 +5,14 @@ import {
   Box,
   Button,
   ChakraProvider,
+  Checkbox,
   Flex,
   FormControl,
   FormLabel,
-  HStack,
   Input,
   InputGroup,
   InputRightElement,
+  Link,
   Stack,
   useColorModeValue,
 } from '@chakra-ui/react';
@@ -24,11 +25,11 @@ import { useCssAndCx } from 'tss-react';
 import type { KcContext } from '../context';
 import './style.css';
 
-type KcContext_Register = Extract<KcContext, { pageId: 'register.ftl' }>;
+type KcContext_Login = Extract<KcContext, { pageId: 'login.ftl' }>;
 
-export const Register = memo(
-  ({ kcContext, ...props }: { kcContext: KcContext_Register } & KcProps) => {
-    const { url, register } = kcContext;
+export const Login = memo(
+  ({ kcContext, ...props }: { kcContext: KcContext_Login } & KcProps) => {
+    const { url, login } = kcContext;
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -60,18 +61,17 @@ export const Register = memo(
       <Template
         {...{ kcContext, ...props }}
         kcHeaderWrapperClass='header-wrapper'
-        kcLoginClass='register-page'
-        kcHtmlClass='samson-register'
+        kcLoginClass='login-page'
         displayWide={true}
         doFetchDefaultThemeResources={false}
         kcFeedbackErrorIcon='chakra-alert__icon'
         kcFeedbackSuccessIcon='chakra-alert__icon'
         headerNode={
           <FormHeader
-            title='Sign up an account'
-            subTitle='Already have an account?'
-            link={url.loginUrl}
-            linkText='Login'
+            title='Sign in to your account'
+            subTitle="Don't have an account?"
+            link={url.registrationUrl}
+            linkText='Sign up'
           />
         }
         formNode={
@@ -93,45 +93,10 @@ export const Register = memo(
                   ref={measuredRef}
                   id='kc-register-form'
                   className={cx(props.kcFormClass)}
-                  action={url.registrationAction}
+                  action={url.loginAction}
                   method='post'
                 >
                   <Stack spacing={4} w='100%'>
-                    <HStack w='100%' justifyContent='space-between'>
-                      <Box w='50%'>
-                        <FormControl
-                          id='firstName'
-                          className={cx(props.kcFormGroupClass)}
-                          isRequired
-                        >
-                          <FormLabel>First Name</FormLabel>
-                          <Input
-                            type='text'
-                            id='firstName'
-                            className={cx(props.kcInputClass)}
-                            name='firstName'
-                            defaultValue={register.formData.firstName ?? ''}
-                          />
-                        </FormControl>
-                      </Box>
-                      <Box>
-                        <FormControl
-                          id='lastName'
-                          className={cx(props.kcFormGroupClass)}
-                          isRequired
-                        >
-                          <FormLabel>Last Name</FormLabel>
-                          <Input
-                            type='text'
-                            id='lastName'
-                            className={cx(props.kcInputClass)}
-                            name='lastName'
-                            defaultValue={register.formData.lastName ?? ''}
-                          />
-                        </FormControl>
-                      </Box>
-                    </HStack>
-
                     <FormControl id='email' isRequired>
                       <FormLabel
                         className={cx(props.kcFormGroupClass)}
@@ -143,9 +108,9 @@ export const Register = memo(
                         type='text'
                         id='email'
                         className={cx(props.kcInputClass)}
-                        name='email'
-                        defaultValue={register.formData.email ?? ''}
+                        name='username'
                         autoComplete='email'
+                        defaultValue={login.username}
                       />
                     </FormControl>
 
@@ -181,36 +146,27 @@ export const Register = memo(
                       </InputGroup>
                     </FormControl>
 
-                    <FormControl
-                      isRequired
-                      className={cx(props.kcFormGroupClass)}
-                    >
-                      <FormLabel
-                        htmlFor='password-confirm'
-                        className={cx(props.kcLabelClass)}
-                      >
-                        Password confirm
-                      </FormLabel>
-                      <InputGroup>
-                        <Input
-                          type={showPassword ? 'text' : 'password'}
-                          id='password-confirm'
-                          className={cx(props.kcInputClass)}
-                          name='password-confirm'
-                        />
-                        <InputRightElement h={'full'}>
-                          <Button
-                            variant={'ghost'}
-                            onClick={() =>
-                              setShowPassword((showPassword) => !showPassword)
-                            }
-                          >
-                            {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                          </Button>
-                        </InputRightElement>
-                      </InputGroup>
-                    </FormControl>
                     <Stack spacing={10} pt={2}>
+                      <Stack
+                        direction={{ base: 'column', sm: 'row' }}
+                        align={'start'}
+                        justify={'space-between'}
+                      >
+                        <Checkbox
+                          name='rememberMe'
+                          defaultValue={login.rememberMe}
+                        >
+                          Remember me
+                        </Checkbox>
+                        <Link
+                          href={url.loginResetCredentialsUrl}
+                          color={'blue.400'}
+                          textDecoration='underline'
+                          textUnderlineOffset={2}
+                        >
+                          <Button variant='link'>Forgot password?</Button>
+                        </Link>
+                      </Stack>
                       <Button
                         loadingText='Submitting'
                         size='lg'
@@ -221,7 +177,7 @@ export const Register = memo(
                         }}
                         type='submit'
                       >
-                        Sign up
+                        Login
                       </Button>
                     </Stack>
                   </Stack>
