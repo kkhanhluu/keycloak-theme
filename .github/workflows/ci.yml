@@ -34,8 +34,6 @@ jobs:
     if: |
       github.event_name == 'push' &&
       needs.check_if_version_upgraded.outputs.is_upgraded_version == 'true'
-    needs:
-      - docker
     steps:
       - uses: garronej/github_actions_toolkit@v2.4
         with:
@@ -46,7 +44,6 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - update_changelog
-      - check_if_version_upgraded
     steps:
       - uses: actions/checkout@v2
         with:
