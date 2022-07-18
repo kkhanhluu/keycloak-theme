@@ -7,6 +7,7 @@ import type { KcContext } from './context';
 import './kcMessagesExtension';
 import { Login } from './Login';
 import { Register } from './Register';
+import { UpdatePassword } from './UpdatePassword';
 
 export const KcApp = memo(({ kcContext }: { kcContext: KcContext }) => {
   switch (kcContext.pageId) {
@@ -14,6 +15,8 @@ export const KcApp = memo(({ kcContext }: { kcContext: KcContext }) => {
       return <Login {...{ kcContext, ...props }} />;
     case 'register.ftl':
       return <Register {...{ kcContext, ...props }} />;
+    case 'login-update-password.ftl':
+      return <UpdatePassword {...{ kcContext, ...props }} />;
     case 'info.ftl':
       return <Info {...{ kcContext, ...props }} />;
     case 'error.ftl':

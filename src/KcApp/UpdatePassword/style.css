@@ -1,0 +1,10 @@
+.update-password-page {
+  background-color: #f7fafc;
+  min-height: 100vh;
+  padding: 8vh;
+}
+
+.update-password-page #kc-content {
+  width: 40%;
+  margin: 1rem auto;
+}
