@@ -31,8 +31,8 @@ jobs:
 
   update_changelog:
     runs-on: ubuntu-latest
-    if: |
-      github.event_name == 'push'
+    needs:
+      - build
     steps:
       - uses: garronej/github_actions_toolkit@v2.4
         with:
