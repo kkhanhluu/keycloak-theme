@@ -1,0 +1,15 @@
+.login-otp-page {
+  background-color: #f7fafc;
+  min-height: 100vh;
+  padding: 8vh;
+}
+
+.login-otp-page form {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.login-otp-page #kc-content {
+  width: 40%;
+  margin: 1rem auto;
+}

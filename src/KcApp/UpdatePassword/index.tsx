@@ -61,6 +61,11 @@ export const UpdatePassword = memo(
       );
     }
 
+    const kcUsername = document.getElementById('kc-username');
+    if (kcUsername) {
+      (kcUsername as HTMLDivElement).textContent = 'Update password';
+    }
+
     return (
       <Template
         {...{ kcContext, ...props }}

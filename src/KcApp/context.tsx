@@ -55,7 +55,7 @@ export const { kcContext } = getKcContext<{
       },
     },
   ],
-  // mockPageId: 'login-update-password.ftl',
+  // mockPageId: 'login-otp.ftl',
 });
 
 export type KcContext = NonNullable<typeof kcContext>;

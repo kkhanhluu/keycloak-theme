@@ -6,6 +6,7 @@ import { memo } from 'react';
 import type { KcContext } from './context';
 import './kcMessagesExtension';
 import { Login } from './Login';
+import { LoginOTP } from './LoginOTP';
 import { Register } from './Register';
 import { UpdatePassword } from './UpdatePassword';
 
@@ -17,6 +18,8 @@ export const KcApp = memo(({ kcContext }: { kcContext: KcContext }) => {
       return <Register {...{ kcContext, ...props }} />;
     case 'login-update-password.ftl':
       return <UpdatePassword {...{ kcContext, ...props }} />;
+    case 'login-otp.ftl':
+      return <LoginOTP {...{ kcContext, ...props }} />;
     case 'info.ftl':
       return <Info {...{ kcContext, ...props }} />;
     case 'error.ftl':
