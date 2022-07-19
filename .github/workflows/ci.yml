@@ -32,8 +32,7 @@ jobs:
   update_changelog:
     runs-on: ubuntu-latest
     if: |
-      github.event_name == 'push' &&
-      needs.check_if_version_upgraded.outputs.is_upgraded_version == 'true'
+      github.event_name == 'push'
     steps:
       - uses: garronej/github_actions_toolkit@v2.4
         with:
