@@ -1,0 +1,16 @@
+parser: '@typescript-eslint/parser'
+
+plugins:
+  - '@typescript-eslint'
+  - 'react-hooks'
+rules:
+  '@typescript-eslint/no-unused-vars':
+    - error
+    - varsIgnorePattern: ^_
+ignorePatterns:
+  - 'src/generated/**'
+  - '**/*.generated.*'
+  - 'babel.config.js'
+  - 'webpack.config.ts'
+  - 'jest.config.ts'
+  - 'release.config.js'
